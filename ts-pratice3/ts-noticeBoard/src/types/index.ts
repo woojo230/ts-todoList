@@ -1,7 +1,7 @@
-export interface Post{
-    id:Number;
-    title:String;
-    content:String;
-    author:String
-    createAt:String
+export interface Post {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: Date;
 }
