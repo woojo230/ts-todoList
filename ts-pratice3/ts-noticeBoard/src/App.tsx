@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Post } from './types';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';
@@ -32,9 +32,13 @@ function App() {
     setSelectedPost(null);
   };
 
-  const selectPostForEdit = (post: Post) => {
+  const selectedPostForEdit = (post: Post) => {
     setSelectedPost(post);
   };
+
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
 
   return (
     <>
@@ -48,7 +52,7 @@ function App() {
         <PostList
           posts={posts}
           deletePost={deletePost}
-          selectPostForEdit={selectPostForEdit}
+          selectedPostForEdit={selectedPostForEdit}
         />
       </div>
     </>

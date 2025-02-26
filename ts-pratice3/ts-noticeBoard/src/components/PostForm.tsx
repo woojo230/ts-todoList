@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Post } from '../types';
 
 interface PostFormProps {
@@ -31,7 +31,24 @@ const PostForm = ({ addPost, selectedPost, editPost }: PostFormProps) => {
     setIsEdit(false);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!title.trim() || !content.trim() || !author.trim()) {
+      alert('모든 필드를 입력해주세요.');
+      return;
+    }
+    if (isEdit && selectedPost) {
+      editPost({
+        ...selectedPost,
+        title,
+        content,
+        author,
+      });
+    } else {
+      addPost(title, content, author);
+    }
+    resetForm();
+  };
 
   return (
     <>
