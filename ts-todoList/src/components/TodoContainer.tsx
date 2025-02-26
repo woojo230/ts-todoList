@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { TTodo } from '../types/todo';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
-import CheckBox from './CheckBox';
 
 function TodoContainer() {
   const [todos, setTodos] = useState<TTodo[]>([
